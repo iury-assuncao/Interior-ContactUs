@@ -10,11 +10,7 @@ require('dotenv/config');
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
-
 app.use(express.static('public'))
-
-
-
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -30,11 +26,8 @@ const email = req.body.email
 const name = req.body.name
 const message = req.body.text
 
-
-
-
   let mailOptions = {
-    from:`${name} <iuryifba@gmail.com> `,
+    from:`${name} `,
     to: 'iuryreivax@hotmail.com',
     replyTo: `${email}`,
     subject:'Contact interior',
@@ -44,9 +37,7 @@ const message = req.body.text
       <p>Email para contato: ${email}</p>
     `
   }
-
-
-  
+ 
 
   transporter.sendMail (mailOptions, function(error,info){
     if(error){
